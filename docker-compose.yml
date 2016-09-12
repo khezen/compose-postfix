@@ -1,0 +1,12 @@
+smtp:
+  image: "catatnight/postfix"
+  ports:
+    - "25:25"
+    - "587:587"
+  volumes:
+    - /srv/postfix/conf:/etc/postfix
+    - /srv/postfix/domainkeys:/etc/opendkim/domainkeys
+  environment:
+    - maildomain=mail.example.com
+    - smtp_user=user:pwd
+  restart: always
